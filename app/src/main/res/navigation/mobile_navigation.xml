@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_new_issue"
-        android:name="com.example.civiswipe.ui.home.HomeFragment"
+        android:name="com.example.civiswipe.ui.newissue.NewIssueFragment"
         android:label="@string/title_new_issue"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_submit_issue" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
