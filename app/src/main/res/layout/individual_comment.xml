@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profileImage">
+        <!-- the profile picture -->
+        <RelativeLayout
+            android:id="@+id/cirleImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp">
+
+            <FrameLayout android:id="@+id/frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView android:id="@+id/pic"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/pp1" />
+
+                <ImageView android:id="@+id/circle_crop"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/circlecrop" />
+
+            </FrameLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/cirleImage"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:id="@+id/commentUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:text="Karen Phillips"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/commentComment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginRight="10dp"
+                android:text="I have been asking the mayor to fix this issue for ages and ages and ages and ages"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="Reply..."
+                android:layout_below="@+id/commentComment"
+                android:layout_marginLeft="20dp"
+                android:textStyle="bold"
+                android:textSize="11sp"
+
+                />
+
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

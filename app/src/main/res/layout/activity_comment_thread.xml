@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--  the top bar that reads "comments" and has a back button -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/topBar">
+
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/backArrow"
+            android:layout_margin="10dp"
+            android:background="@null"
+            android:src="@drawable/back_arrow"
+            android:scaleType="fitCenter" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/backArrow"
+            android:text="Comments"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- the actual comment section where the comments go -->
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/commentArea"
+    android:layout_below="@+id/topBar"
+    android:layout_marginBottom="70dp">
+
+       <!-- This is where our list of comments goes -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/commentList">
+            <!-- and individual comment -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/profileImage">
+                <!-- the profile picture -->
+                <RelativeLayout
+                    android:id="@+id/cirleImage"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp">
+
+                    <FrameLayout android:id="@+id/frame"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView android:id="@+id/pic"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/pp1" />
+
+                        <ImageView android:id="@+id/circle_crop"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/circlecrop" />
+
+                    </FrameLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/cirleImage"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/commentUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Karen Phillips"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/commentComment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="21dp"
+                        android:layout_marginRight="10dp"
+                        android:text="I have been asking the mayor to fix this issue for ages and ages and ages and ages"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Reply..."
+                        android:layout_below="@+id/commentComment"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+
+                        />
+
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/profileImage"
+                android:layout_height="80dp"
+                android:id="@+id/profileImage2">
+
+                <!-- the profile picture -->
+                <RelativeLayout
+                    android:id="@+id/cirleImage2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp">
+
+                    <FrameLayout android:id="@+id/frame2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView android:id="@+id/pic2"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/pp2" />
+
+                        <ImageView android:id="@+id/circle_crop2"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/circlecrop" />
+
+                    </FrameLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/cirleImage2"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/commentUsername2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Gen Micheals"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/commentComment2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="21dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Im so glad somebody has finally reported on this!"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Reply..."
+                        android:layout_below="@+id/commentComment2"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+
+                        />
+
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/profileImage2"
+                android:layout_height="90"
+                android:id="@+id/profileImage3">
+
+                <!-- the profile picture -->
+                <RelativeLayout
+                    android:id="@+id/cirleImage3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp">
+
+                    <FrameLayout android:id="@+id/frame3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <ImageView android:id="@+id/pic3"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/pp3" />
+
+                        <ImageView android:id="@+id/circle_crop3"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/circlecrop" />
+
+                    </FrameLayout>
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@id/cirleImage3"
+                    android:layout_marginTop="5dp">
+
+                    <TextView
+                        android:id="@+id/commentUsername3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:text="Darko Davis"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <TextView
+                        android:id="@+id/commentComment3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="21dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Gen Micheals why did you wait for somebody else to report it? Next time you should be the one!"
+                        android:textColor="#000000"
+                        android:textSize="14sp"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="Reply..."
+                        android:layout_below="@+id/commentComment3"
+                        android:layout_marginLeft="20dp"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+
+                        />
+
+
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <!-- the bottom bar where users can enter their own comment -->
+    <RelativeLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+>
+
+        <EditText
+            android:id="@+id/commentBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="70dp"
+            android:background="@android:color/transparent"
+            android:hint="Type your comment here"
+            android:padding="1dp">
+
+        </EditText>
+
+        <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:text="Post"
+            style="?android:attr/borderlessButtonStyle"
+            android:textColor="#3F51B5"
+            android:textStyle="bold" />
+
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
