@@ -188,7 +188,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_below="@+id/profileImage2"
-                android:layout_height="90"
+                android:layout_height="90dp"
                 android:id="@+id/profileImage3">
 
                 <!-- the profile picture -->
