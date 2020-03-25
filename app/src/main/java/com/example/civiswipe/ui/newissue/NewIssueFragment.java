@@ -1,5 +1,6 @@
 package com.example.civiswipe.ui.newissue;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.civiswipe.R;
+
+import java.io.FileOutputStream;
 
 public class NewIssueFragment extends Fragment {
 
@@ -54,11 +57,30 @@ public class NewIssueFragment extends Fragment {
                     Toast.makeText(getActivity(), "Please describe the location", duration).show();
                 } else if (TextUtils.isEmpty(descriptiontext)) {
                     Toast.makeText(getActivity(), "Please add a short description", duration).show();
+                } else {
+
+                    //write data to text file
+                    String savedsubmissions = titletext + "," + locationtext + "," + descriptiontext + ",\n";
+                    FileOutputStream outputStream;
+                    try {
+                        outputStream = getActivity().openFileOutput("savedsubmissions.txt", Context.MODE_APPEND);
+                        outputStream.write(savedsubmissions.getBytes());
+                        outputStream.close();
+                        //finish(); //return to main screen
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), "Did not submit successfully", duration);
+                    }
+                    //TODO: save image to data directory?
+                    
+                    getActivity().onBackPressed(); /*
+                    should go back to home fragment, currently closes out of app cuz we only have one activity
+                    I think this page has the answer, but it is the middle of the night and I cannot parse anything rn
+                    https://stackoverflow.com/questions/42297381/onclick-event-in-navigation-drawer
+                    */
                 }
 
-                //TODO: write data to text file
 
-                //TODO: save image to data directory?
             }
         });
         title = root.findViewById(R.id.title);
