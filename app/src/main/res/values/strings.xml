@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">CiviSwipe</string>
     <string name="title_new_issue">Submit</string>
+    <!--Dashboard-->
     <string name="title_dashboard">Dashboard</string>
+
     <string name="title_notifications">Notifications</string>
 
     <!-- TODO: Remove or change this placeholder text -->
