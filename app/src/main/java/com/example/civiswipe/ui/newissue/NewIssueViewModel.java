@@ -1,5 +1,7 @@
 package com.example.civiswipe.ui.newissue;
 
+import android.view.View;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -16,4 +18,6 @@ public class NewIssueViewModel extends ViewModel {
     public LiveData<String> getText() {
         return mText;
     }
+
+
 }

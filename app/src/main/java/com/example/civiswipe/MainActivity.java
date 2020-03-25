@@ -49,10 +49,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
+/*
     public void SubmitIssue(View v) { //triggered when nav button is pressed; switches to activity to submit new issue
+        //doesn't currently do anything because the navigation bar switches between fragments
         Intent intent = new Intent(this, SubmitIssue.class);
         startActivity(intent);
-    }
+    } */
 
 }
