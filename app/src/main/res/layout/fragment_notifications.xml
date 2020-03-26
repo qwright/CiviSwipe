@@ -124,16 +124,4 @@
         app:layout_constraintVertical_bias="0.77"
         app:srcCompat="@drawable/spray_paint" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="288dp"
-        android:layout_height="56dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@drawable/logo" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
