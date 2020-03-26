@@ -9,16 +9,16 @@
         android:id="@+id/title"
         android:layout_width="400dp"
         android:layout_height="46dp"
+        android:gravity="center_horizontal"
         android:text="Issues You've Liked"
         android:textAlignment="center"
-        android:textSize="30dp"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.005"
-        android:gravity="center_horizontal" />
+        app:layout_constraintVertical_bias="0.122" />
 
     <TextView
         android:id="@+id/issue1"
@@ -123,5 +123,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.77"
         app:srcCompat="@drawable/spray_paint" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="288dp"
+        android:layout_height="56dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
