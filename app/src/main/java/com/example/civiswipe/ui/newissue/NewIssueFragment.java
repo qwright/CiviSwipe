@@ -72,7 +72,7 @@ public class NewIssueFragment extends Fragment {
                         Toast.makeText(getActivity(), "Did not submit successfully", duration);
                     }
                     //TODO: save image to data directory?
-                    
+
                     getActivity().onBackPressed(); /*
                     should go back to home fragment, currently closes out of app cuz we only have one activity
                     I think this page has the answer, but it is the middle of the night and I cannot parse anything rn
