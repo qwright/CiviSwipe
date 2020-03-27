@@ -26,6 +26,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.civiswipe.MainActivity;
 import com.example.civiswipe.R;
+import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -112,14 +113,14 @@ public class NewIssueFragment extends Fragment {
                         outputStream = getActivity().openFileOutput("savedsubmissions.txt", Context.MODE_APPEND);
                         outputStream.write(savedsubmissions.getBytes());
                         outputStream.close();
-                        //finish(); //return to main screen
                     } catch (Exception e) {
                         e.printStackTrace();
                         Toast.makeText(getActivity(), "Did not submit successfully", duration);
                     }
                     //TODO: save image to data directory?
-
-                    getActivity().onBackPressed(); /*
+                    //((MainActivity) getActivity()).backToDash(v);
+                   backToDash(v);
+                     /*
                     should go back to home fragment, currently closes out of app cuz we only have one activity
                     I think this page has the answer, but it is the middle of the night and I cannot parse anything rn
                     https://stackoverflow.com/questions/42297381/onclick-event-in-navigation-drawer
@@ -148,6 +149,10 @@ public class NewIssueFragment extends Fragment {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             image.setImageBitmap(imageBitmap);
         }
+    }
+
+    public void backToDash(View v) {
+        ((MainActivity) getActivity()).backToDash(v);
     }
 
 

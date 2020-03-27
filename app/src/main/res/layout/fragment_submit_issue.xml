@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
-        android:onClick="finish"
+        android:onClick="backToDash"
         android:text="Cancel"
         app:layout_constraintEnd_toStartOf="@+id/text_new_submission"
         app:layout_constraintHorizontal_bias="0.511"
@@ -113,6 +113,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image" />
-=======
->>>>>>> 9d780a81ce2bd74034a72469d99399b100706ad8
+
 </androidx.constraintlayout.widget.ConstraintLayout>

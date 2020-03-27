@@ -18,13 +18,13 @@ import static com.example.civiswipe.R.id.commentsButton;
 public class MainActivity extends AppCompatActivity {
 
     Button commentButton;
-
+    BottomNavigationView navView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        BottomNavigationView navView = findViewById(R.id.nav_view);
+        navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        if (savedInstanceState == null) {
+            navView.setSelectedItemId(R.id.navigation_dashboard); //dashboard is default fragment when you start the app
+        }
 
         commentButton = (Button)findViewById(commentsButton);
 
@@ -50,13 +54,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void backToDash(View v) {
+        navView.setSelectedItemId(R.id.navigation_dashboard);
+    }
 
 
-    /*
-    public void SubmitIssue(View v) { //triggered when nav button is pressed; switches to activity to submit new issue
-        //doesn't currently do anything because the navigation bar switches between fragments
-        Intent intent = new Intent(this, SubmitIssue.class);
-        startActivity(intent);
-    } */
 
 }
