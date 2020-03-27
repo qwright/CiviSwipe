@@ -1,7 +1,13 @@
 package com.example.civiswipe.ui.newissue;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +24,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.civiswipe.MainActivity;
 import com.example.civiswipe.R;
 
+import java.io.File;
 import java.io.FileOutputStream;
+
+import static android.app.Activity.RESULT_OK;
 
 public class NewIssueFragment extends Fragment {
 
@@ -28,6 +38,7 @@ public class NewIssueFragment extends Fragment {
 
     Button cancel;
     Button submit;
+    Button addphoto;
     EditText title;
     ImageView image; //TODO: make this a user-submitted image
     EditText description;
@@ -40,6 +51,41 @@ public class NewIssueFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_submit_issue, container, false);
         cancel = root.findViewById(R.id.cancel);
         submit = root.findViewById(R.id.submit);
+        addphoto = root.findViewById(R.id.photo);
+
+        addphoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Add a Photo");
+                builder.setItems(options, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int item) {
+                        if (options[item].equals("Take Photo"))
+                        {
+                            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                            if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+                                startActivityForResult(takePictureIntent, 1);
+                            }
+
+                            /*File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
+                            takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
+                            startActivityForResult(takePictureIntent, 1); */
+                        }
+                        else if (options[item].equals("Choose from Gallery"))
+                        {
+                            Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            startActivityForResult(intent, 2);
+                        }
+                        else if (options[item].equals("Cancel")) {
+                            dialog.dismiss();
+                        }
+                    }
+                });
+                builder.show();
+            }
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,8 +125,6 @@ public class NewIssueFragment extends Fragment {
                     https://stackoverflow.com/questions/42297381/onclick-event-in-navigation-drawer
                     */
                 }
-
-
             }
         });
         title = root.findViewById(R.id.title);
@@ -96,5 +140,15 @@ public class NewIssueFragment extends Fragment {
         });*/
         return root;
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if ((requestCode == 1 | requestCode == 2) && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            image.setImageBitmap(imageBitmap);
+        }
+    }
+
 
 }
