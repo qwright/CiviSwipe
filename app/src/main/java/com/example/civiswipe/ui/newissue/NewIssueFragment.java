@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -54,6 +56,8 @@ public class NewIssueFragment extends Fragment {
         submit = root.findViewById(R.id.submit);
         addphoto = root.findViewById(R.id.photo);
 
+
+
         addphoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,8 +80,11 @@ public class NewIssueFragment extends Fragment {
                         }
                         else if (options[item].equals("Choose from Gallery"))
                         {
-                            Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                            startActivityForResult(intent, 2);
+                            //Intent choosePictureIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                            Intent choosePictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                           // choosePictureIntent.setType("image/*");
+                            //choosePictureIntent.setAction(Intent.ACTION_GET_CONTENT);
+                            startActivityForResult(choosePictureIntent, 2);
                         }
                         else if (options[item].equals("Cancel")) {
                             dialog.dismiss();
@@ -113,9 +120,10 @@ public class NewIssueFragment extends Fragment {
                         outputStream = getActivity().openFileOutput("savedsubmissions.txt", Context.MODE_APPEND);
                         outputStream.write(savedsubmissions.getBytes());
                         outputStream.close();
+                        Toast.makeText(getActivity(), "Submission successful", duration).show();
                     } catch (Exception e) {
                         e.printStackTrace();
-                        Toast.makeText(getActivity(), "Did not submit successfully", duration);
+                        Toast.makeText(getActivity(), "Did not submit successfully", duration).show();
                     }
                     //TODO: save image to data directory?
                     //((MainActivity) getActivity()).backToDash(v);
@@ -142,18 +150,32 @@ public class NewIssueFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if ((requestCode == 1 | requestCode == 2) && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            Bitmap imageBitmap = (Bitmap) extras.get("data");
-            image.setImageBitmap(imageBitmap);
-        }
-    }
+
 
     public void backToDash(View v) {
         ((MainActivity) getActivity()).backToDash(v);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //if ((requestCode == 1 | requestCode == 2) && resultCode == RESULT_OK) {
+        if(requestCode == 1 && resultCode == RESULT_OK) { //handles picture from camera
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            image.setImageBitmap(imageBitmap);
+        } else if(requestCode == 2 && resultCode == RESULT_OK) { //handles picture from gallery
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getActivity().getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            //ImageView imageView = (ImageView) findViewById(R.id.imgView);
+            image.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+        }
+        else {Toast.makeText(getActivity(), "Could not access photo", Toast.LENGTH_SHORT).show();
 
+        }
+    }
 }
