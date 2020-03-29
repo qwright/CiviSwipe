@@ -1,6 +1,7 @@
 package com.example.civiswipe.ui.dashboard;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -106,7 +107,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
      */
     public void getIssue()
     {
-        Toast.makeText(getActivity(), "CLICKED", Toast.LENGTH_SHORT).show();
+        //Intent intent = new Intent(getActivity(), IssueDetails.class);
+        //startActivity(intent);
     }
     /*
     onClick handles buttons
