@@ -53,7 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-
+    @Override
+    public void onBackPressed() { //TODO: implement this method in comment method such that it goes back to main activity instead of closing app
+        navView.setSelectedItemId(R.id.navigation_dashboard);
+    }
+        //this method may have been made redundant by onBackPressed but it's convenient to have it to call
+        //when a form is submitted or a cancel button is pressed, not just when the user presses the back button
     public void backToDash(View v) {
         navView.setSelectedItemId(R.id.navigation_dashboard);
     }
