@@ -16,7 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.civiswipe.Issue;
 import com.example.civiswipe.R;
+import com.example.civiswipe.ui.notifications.IssueDetails;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -107,8 +109,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
      */
     public void getIssue()
     {
-        //Intent intent = new Intent(getActivity(), IssueDetails.class);
-        //startActivity(intent);
+        Intent intent = new Intent(getActivity(), IssueDetails.class);
+        startActivity(intent);
     }
     /*
     onClick handles buttons

@@ -2,6 +2,7 @@ package com.example.civiswipe.ui.newissue;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -25,14 +26,20 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.civiswipe.Issue;
 import com.example.civiswipe.MainActivity;
 import com.example.civiswipe.R;
+import com.example.civiswipe.ui.home.HomeFragment;
+import com.example.civiswipe.ui.home.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -47,12 +54,13 @@ public class NewIssueFragment extends Fragment {
     ImageView image;
     EditText description;
     EditText location;
+    View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         //newIssueViewModel =
         //   ViewModelProviders.of(this).get(NewIssueViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_submit_issue, container, false);
+        root = inflater.inflate(R.layout.fragment_submit_issue, container, false);
         cancel = root.findViewById(R.id.cancel);
         submit = root.findViewById(R.id.submit);
         addphoto = root.findViewById(R.id.photo);
@@ -158,6 +166,7 @@ public class NewIssueFragment extends Fragment {
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             image.setImageBitmap(imageBitmap);
+
         } else if (requestCode == 2 && resultCode == RESULT_OK) { //handles picture from gallery
             try {
                 Uri selectedImage = data.getData();
@@ -169,6 +178,7 @@ public class NewIssueFragment extends Fragment {
                 cursor.close();
                 //ImageView imageView = (ImageView) findViewById(R.id.imgView);
                 image.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
             } catch (Exception e) {
                 Toast.makeText(getActivity(), "Could not access photo", Toast.LENGTH_SHORT).show();
             }
