@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/navigation_issues"
         android:name="com.example.civiswipe.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="Issues"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment

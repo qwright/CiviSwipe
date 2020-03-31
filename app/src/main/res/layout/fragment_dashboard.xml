@@ -7,30 +7,32 @@
 
     <ImageButton
         android:id="@+id/like_button"
-        android:layout_width="101dp"
-        android:layout_height="111dp"
-        android:scaleType="centerCrop"
+        android:layout_width="71dp"
+        android:layout_height="70dp"
         android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861"
+        app:layout_constraintVertical_bias="0.844"
         app:srcCompat="@drawable/checkbutton" />
 
     <ImageButton
         android:id="@+id/dislike_button"
-        android:layout_width="101dp"
-        android:layout_height="111dp"
-        android:scaleType="centerCrop"
+        android:layout_width="71dp"
+        android:layout_height="72dp"
         android:adjustViewBounds="true"
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.861"
+        app:layout_constraintVertical_bias="0.846"
         app:srcCompat="@drawable/x_button" />
 
     <ImageView
