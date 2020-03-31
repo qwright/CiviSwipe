@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/profileImage">
         <!-- the profile picture -->
         <RelativeLayout
@@ -57,17 +58,40 @@
                 android:textColor="#000000"
                 android:textSize="14sp"
                 />
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/responses"
+                android:layout_below="@id/commentComment"
+                >
+                <ListView
+                    android:id="@+id/subListThing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:text="Reply..."
-                android:layout_below="@+id/commentComment"
-                android:layout_marginLeft="20dp"
-                android:textStyle="bold"
-                android:textSize="11sp"
+                android:id="@+id/reply"
+                android:layout_below="@id/responses"
+                >
+                <TextView
 
-                />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Reply..."
+                    android:layout_marginLeft="20dp"
+                    android:textStyle="bold"
+                    android:textSize="11sp"
+
+                    />
+            </RelativeLayout>
 
 
 
