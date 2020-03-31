@@ -3,6 +3,8 @@ package com.example.civiswipe.ui.notifications;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,6 +28,16 @@ public class IssueDetails extends AppCompatActivity {
         img = findViewById(R.id.image);
         title = findViewById(R.id.title);
         loc = findViewById(R.id.location);
+        ImageButton back = (ImageButton) findViewById(R.id.backArrow);
+        back.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                //sending the number of questions to the quiz class if the a selection has been made
+                //Intent intent =new Intent(commentThread.this, MainActivity.class);
+                //startActivity(intent);
+                finish();}
+
+        });
         description = findViewById(R.id.description);
         int calling = getIntent().getIntExtra("calling-activity", 0);
         if(calling==1){
