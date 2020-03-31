@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 import android.media.Image;
 import android.widget.ImageView;
 
+import com.example.civiswipe.ui.comments.Comment;
+
 import java.util.LinkedList;
 
 public class Issue {

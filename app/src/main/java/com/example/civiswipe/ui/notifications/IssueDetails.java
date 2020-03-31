@@ -2,11 +2,15 @@ package com.example.civiswipe.ui.notifications;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.civiswipe.R;
+import com.example.civiswipe.ui.comments.commentThread;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,9 +19,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class IssueDetails extends AppCompatActivity {
+public class IssueDetails extends AppCompatActivity implements View.OnClickListener{
 
     private ImageView img;
+    private Button comment;
     private TextView title, loc, description;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +36,8 @@ public class IssueDetails extends AppCompatActivity {
         if(calling==1){
             readFile();
         }
+        comment = findViewById(R.id.comments2);
+        comment.setOnClickListener(this);
     }
 
     public void readFile()
@@ -50,5 +57,11 @@ public class IssueDetails extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(this, commentThread.class);
+        startActivity(intent);
     }
 }
