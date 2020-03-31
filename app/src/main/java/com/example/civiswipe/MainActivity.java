@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.civiswipe.ui.comments.commentThread;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,11 +14,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import static com.example.civiswipe.R.id.commentsButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button commentButton;
     BottomNavigationView navView;
 
     @Override
@@ -38,19 +37,11 @@ public class MainActivity extends AppCompatActivity {
             navView.setSelectedItemId(R.id.navigation_dashboard); //dashboard is default fragment when you start the app
         }
 
-        commentButton = (Button)findViewById(commentsButton);
-
-        commentButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                Intent intent =new Intent(MainActivity.this, commentThread.class);
-                startActivity(intent);
-
-            }
 
 
 
-        });
+
+
     }
     @Override
     public void onBackPressed() { //TODO: implement this method in comment method such that it goes back to main activity instead of closing app

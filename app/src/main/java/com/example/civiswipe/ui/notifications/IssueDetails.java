@@ -35,7 +35,7 @@ public class IssueDetails extends AppCompatActivity {
 
     public void readFile()
     {
-        img.setImageResource(R.drawable.treeonroad);
+        img.setImageResource(R.drawable.logo);
         try {
             FileInputStream fin = new FileInputStream(new File("/data/data/com.example.civiswipe/files/savedsubmissions.txt"));
             InputStreamReader in = new InputStreamReader(fin);

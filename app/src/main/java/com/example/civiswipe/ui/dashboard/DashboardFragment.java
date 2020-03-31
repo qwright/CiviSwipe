@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -17,16 +18,20 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.civiswipe.Issue;
+import com.example.civiswipe.MainActivity;
 import com.example.civiswipe.R;
+import com.example.civiswipe.ui.comments.commentThread;
 import com.example.civiswipe.ui.notifications.IssueDetails;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Stack;
 
+
 public class DashboardFragment extends Fragment implements View.OnClickListener{
     private static DashboardFragment dash;
     private ImageButton like, dislike;
+    private Button comments;
     private ImageView imgView;
     private Integer[] imgList;
     private Stack<Integer> cardstack;
@@ -82,6 +87,15 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
         like.setOnClickListener(this);
         dislike = root.findViewById(R.id.dislike_button);
         dislike.setOnClickListener(this);
+        // added in the comments button
+        comments = root.findViewById(R.id.comments);
+        comments.setOnClickListener(new View.OnClickListener(){
+                                        @Override
+                                        public void onClick(View v){
+                                            //sending the number of questions to the quiz class if the a selection has been made
+                                            Intent intent =new Intent(getActivity(), commentThread.class);
+                                            startActivity(intent);
+                                            };});
         //available images
         imgList = new Integer[]{
                 R.drawable.broken_light,

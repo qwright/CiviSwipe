@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.notifications.IssueDetails"></activity>
-        <activity android:name=".commentThread" />
+        <activity android:name=".ui.comments.commentThread" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

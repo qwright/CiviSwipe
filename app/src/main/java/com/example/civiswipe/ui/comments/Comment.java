@@ -1,4 +1,4 @@
-package com.example.civiswipe;
+package com.example.civiswipe.ui.comments;
 
 import java.util.ArrayList;
 
