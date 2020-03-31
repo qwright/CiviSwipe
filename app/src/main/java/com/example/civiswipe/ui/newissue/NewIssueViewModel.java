@@ -11,13 +11,13 @@ public class NewIssueViewModel extends ViewModel {
     private MutableLiveData<String> mText;
 
     public NewIssueViewModel() {
-        mText = new MutableLiveData<>();
+       // mText = new MutableLiveData<>();
         //mText.setValue("This is a new issue fragment");
     }
 
-    public LiveData<String> getText() {
+   /* public LiveData<String> getText() {
         return mText;
-    }
+    } */
 
 
 }

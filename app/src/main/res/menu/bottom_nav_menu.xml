@@ -13,5 +13,9 @@
         android:id="@+id/navigation_issues"
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="Issues" />
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home"/>
 
 </menu>

@@ -37,7 +37,6 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         issue = root.findViewById(R.id.issue1);
         issue.setOnClickListener(this);
         return root;
-
     }
 
     @Override

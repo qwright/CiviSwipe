@@ -2,6 +2,7 @@ package com.example.civiswipe.ui.newissue;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -25,13 +26,20 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.civiswipe.Issue;
 import com.example.civiswipe.MainActivity;
 import com.example.civiswipe.R;
+import com.example.civiswipe.ui.home.HomeFragment;
+import com.example.civiswipe.ui.home.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -43,32 +51,31 @@ public class NewIssueFragment extends Fragment {
     Button submit;
     Button addphoto;
     EditText title;
-    ImageView image; //TODO: make this a user-submitted image
+    ImageView image;
     EditText description;
     EditText location;
+    View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         //newIssueViewModel =
-             //   ViewModelProviders.of(this).get(NewIssueViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_submit_issue, container, false);
+        //   ViewModelProviders.of(this).get(NewIssueViewModel.class);
+        root = inflater.inflate(R.layout.fragment_submit_issue, container, false);
         cancel = root.findViewById(R.id.cancel);
         submit = root.findViewById(R.id.submit);
         addphoto = root.findViewById(R.id.photo);
 
 
-
         addphoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+                final CharSequence[] options = {"Take Photo", "Choose from Gallery", "Cancel"};
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Add a Photo");
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
-                        if (options[item].equals("Take Photo"))
-                        {
+                        if (options[item].equals("Take Photo")) {
                             Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                             if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
                                 startActivityForResult(takePictureIntent, 1);
@@ -77,16 +84,13 @@ public class NewIssueFragment extends Fragment {
                             /*File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
                             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                             startActivityForResult(takePictureIntent, 1); */
-                        }
-                        else if (options[item].equals("Choose from Gallery"))
-                        {
+                        } else if (options[item].equals("Choose from Gallery")) {
                             //Intent choosePictureIntent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                             Intent choosePictureIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                           // choosePictureIntent.setType("image/*");
+                            // choosePictureIntent.setType("image/*");
                             //choosePictureIntent.setAction(Intent.ACTION_GET_CONTENT);
                             startActivityForResult(choosePictureIntent, 2);
-                        }
-                        else if (options[item].equals("Cancel")) {
+                        } else if (options[item].equals("Cancel")) {
                             dialog.dismiss();
                         }
                     }
@@ -105,8 +109,8 @@ public class NewIssueFragment extends Fragment {
 
                 //check that each mandatory field is filled
                 int duration = Toast.LENGTH_SHORT;
-                if(TextUtils.isEmpty(titletext)) {
-                  Toast.makeText(getActivity(), "Please add a title", duration).show();
+                if (TextUtils.isEmpty(titletext)) {
+                    Toast.makeText(getActivity(), "Please add a title", duration).show();
                 } else if (TextUtils.isEmpty(locationtext)) {
                     Toast.makeText(getActivity(), "Please describe the location", duration).show();
                 } else if (TextUtils.isEmpty(descriptiontext)) {
@@ -127,7 +131,7 @@ public class NewIssueFragment extends Fragment {
                     }
                     //TODO: save image to data directory?
                     //((MainActivity) getActivity()).backToDash(v);
-                   backToDash(v);
+                    backToDash(v);
                      /*
                     should go back to home fragment, currently closes out of app cuz we only have one activity
                     I think this page has the answer, but it is the middle of the night and I cannot parse anything rn
@@ -151,7 +155,6 @@ public class NewIssueFragment extends Fragment {
     }
 
 
-
     public void backToDash(View v) {
         ((MainActivity) getActivity()).backToDash(v);
     }
@@ -159,23 +162,26 @@ public class NewIssueFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         //if ((requestCode == 1 | requestCode == 2) && resultCode == RESULT_OK) {
-        if(requestCode == 1 && resultCode == RESULT_OK) { //handles picture from camera
+        if (requestCode == 1 && resultCode == RESULT_OK) { //handles picture from camera
             Bundle extras = data.getExtras();
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             image.setImageBitmap(imageBitmap);
-        } else if(requestCode == 2 && resultCode == RESULT_OK) { //handles picture from gallery
-            Uri selectedImage = data.getData();
-            String[] filePathColumn = { MediaStore.Images.Media.DATA };
-            Cursor cursor = getActivity().getContentResolver().query(selectedImage,filePathColumn, null, null, null);
-            cursor.moveToFirst();
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            String picturePath = cursor.getString(columnIndex);
-            cursor.close();
-            //ImageView imageView = (ImageView) findViewById(R.id.imgView);
-            image.setImageBitmap(BitmapFactory.decodeFile(picturePath));
-        }
-        else {Toast.makeText(getActivity(), "Could not access photo", Toast.LENGTH_SHORT).show();
 
+        } else if (requestCode == 2 && resultCode == RESULT_OK) { //handles picture from gallery
+            try {
+                Uri selectedImage = data.getData();
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                Cursor cursor = getActivity().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                cursor.moveToFirst();
+                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                String picturePath = cursor.getString(columnIndex);
+                cursor.close();
+                //ImageView imageView = (ImageView) findViewById(R.id.imgView);
+                image.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
+            } catch (Exception e) {
+                Toast.makeText(getActivity(), "Could not access photo", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

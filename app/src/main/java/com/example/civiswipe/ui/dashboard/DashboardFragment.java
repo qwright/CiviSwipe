@@ -1,6 +1,7 @@
 package com.example.civiswipe.ui.dashboard;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -15,7 +16,9 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.civiswipe.Issue;
 import com.example.civiswipe.R;
+import com.example.civiswipe.ui.notifications.IssueDetails;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -106,7 +109,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
      */
     public void getIssue()
     {
-        Toast.makeText(getActivity(), "CLICKED", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), IssueDetails.class);
+        startActivity(intent);
     }
     /*
     onClick handles buttons

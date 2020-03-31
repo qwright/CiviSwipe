@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                 R.id.navigation_dashboard, R.id.navigation_new_issue, R.id.navigation_issues)
+                 R.id.navigation_dashboard, R.id.navigation_new_issue, R.id.navigation_issues, R.id.navigation_home)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -53,7 +53,12 @@ public class MainActivity extends AppCompatActivity {
 
         });
     }
-
+    @Override
+    public void onBackPressed() { //TODO: implement this method in comment method such that it goes back to main activity instead of closing app
+        navView.setSelectedItemId(R.id.navigation_dashboard);
+    }
+        //this method may have been made redundant by onBackPressed but it's convenient to have it to call
+        //when a form is submitted or a cancel button is pressed, not just when the user presses the back button
     public void backToDash(View v) {
         navView.setSelectedItemId(R.id.navigation_dashboard);
     }

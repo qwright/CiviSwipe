@@ -1,5 +1,7 @@
 package com.example.civiswipe;
 
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.widget.ImageView;
 
 import java.util.LinkedList;
@@ -7,11 +9,11 @@ import java.util.LinkedList;
 public class Issue {
     private String title, location, description, userId;
     //Might not be imageview... (drawable resource int or image object?)
-    private ImageView image;
+    private Bitmap image;
     private LinkedList<Comment> thread;
 
     //Add userid?
-    public Issue(String title, String location, ImageView image, String description){
+    public Issue(String title, String location, Bitmap image, String description){
         this.title = title;
         this.location = location;
         this.image = image;
@@ -28,7 +30,7 @@ public class Issue {
     public String getDescription(){
         return description;
     }
-    public ImageView getImage(){
+    public Bitmap getImage(){
         return image;
     }
     public LinkedList<Comment> getThread(){
