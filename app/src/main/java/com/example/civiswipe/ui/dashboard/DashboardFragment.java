@@ -1,7 +1,10 @@
 package com.example.civiswipe.ui.dashboard;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -27,6 +30,8 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Stack;
 
+import static android.graphics.Color.argb;
+
 
 public class DashboardFragment extends Fragment implements View.OnClickListener{
     private static DashboardFragment dash;
@@ -36,6 +41,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
     private Integer[] imgList;
     private Stack<Integer> cardstack;
     private DashboardViewModel dashboardViewModel;
+    private View likeDiv, disDiv;
 
     @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -106,6 +112,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
         //init stack of cards
         generateStack();
         imgView.setImageResource(cardstack.pop());
+
+        //dividers note: uses natural gesture is NATURAL so colors and logic needs to be inverted (for this project)
+        likeDiv = root.findViewById(R.id.divider2);
+        disDiv = root.findViewById(R.id.divider3);
         return root;
     }
     /*
@@ -141,6 +151,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
 
     public void swipeLike()
     {
+        ObjectAnimator colorFade = ObjectAnimator.ofObject(disDiv, "backgroundColor", new ArgbEvaluator(), Color.argb(255,255,51,51), 0x00000000);
+        colorFade.setDuration(500);
+        colorFade.start();
         if (cardstack.size() > 0) {
             Integer pic = cardstack.pop();
             imgView.setImageResource(pic);
@@ -150,6 +163,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener{
     }
 
     public void swipeDislike(){
+        ObjectAnimator colorFade = ObjectAnimator.ofObject(likeDiv, "backgroundColor", new ArgbEvaluator(), Color.argb(255,124,252,0), 0x00000000);
+        colorFade.setDuration(500);
+        colorFade.start();
         if (cardstack.size() > 0) {
             Integer pic = cardstack.pop();
             imgView.setImageResource(pic);
