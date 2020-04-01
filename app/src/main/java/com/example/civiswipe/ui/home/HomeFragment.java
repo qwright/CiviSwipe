@@ -37,7 +37,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         issueText = root.findViewById(R.id.home_issuetitle);
         issueText.setText("Tree on road\n 666 Academy Way");
         img = root.findViewById(R.id.home_img);
-        //img.setImageResource(R.drawable.treeonroad);
+        img.setImageResource(R.drawable.treeonroad);
         issueText.setOnClickListener(this);
         img.setOnClickListener(this);
         return root;

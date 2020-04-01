@@ -26,6 +26,6 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.civiswipe.ui.home.HomeFragment"
-        android:label="Home"
+        android:label="Submissions"
         tools:layout="@layout/home_fragment" />
 </navigation>
