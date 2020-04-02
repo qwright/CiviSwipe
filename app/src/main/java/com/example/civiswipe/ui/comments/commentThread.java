@@ -56,12 +56,14 @@ public class commentThread extends AppCompatActivity {
             sue.addSubComment( new Comment("pp3","Greg Peteson", "The SE corner of Lakeview and Parkside i believe!"));
            // sue.addSubComment(new Comment("pp2","Misty Williams", "Are you sure Greg? Seems like they took it from the schoolyard there"));
             //sue.addSubComment( new Comment("pp4","Sue Johnson", "I think Misty is right. In any case, thanks you both so much I really appreciate the help!!! "));
+        Comment karen2 = new Comment("pp1","Karen Phillips", "I just wanted to say that I am very grateful for the person who posted this issue. I really do appreciate you getting the word out.");
 
         final ArrayList<Comment> commentArrayList = new ArrayList<>();
         commentArrayList.add(karen);
         commentArrayList.add(kate);
         commentArrayList.add(greg);
         commentArrayList.add(sue);
+        commentArrayList.add(karen2);
 
 
         // going to the custom comment adapter

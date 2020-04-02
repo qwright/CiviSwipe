@@ -59,7 +59,7 @@
                 android:layout_marginRight="10dp"
                 android:text="I have been asking the mayor to fix this issue for ages and ages and ages and ages"
                 android:textColor="#000000"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
         </RelativeLayout>
 

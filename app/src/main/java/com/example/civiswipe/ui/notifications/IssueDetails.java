@@ -54,7 +54,7 @@ public class IssueDetails extends AppCompatActivity implements View.OnClickListe
 
     public void readFile()
     {
-        img.setImageResource(R.drawable.logo);
+        img.setImageResource(R.drawable.treeonroad);
         try {
             FileInputStream fin = new FileInputStream(new File("/data/data/com.example.civiswipe/files/savedsubmissions.txt"));
             InputStreamReader in = new InputStreamReader(fin);

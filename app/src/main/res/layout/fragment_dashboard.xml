@@ -49,15 +49,18 @@
         app:layout_constraintVertical_bias="0.322"
         tools:srcCompat="@drawable/broken_light" />
 <!-- feel free to change the position or style of this button -->
+
     <Button
         android:id="@+id/comments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:background="@null"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="75dp"
+        android:background="#21A5B1"
         android:text="Comments"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/like_button"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toEndOf="@+id/dislike_button"
         app:layout_constraintTop_toBottomOf="@+id/cardStack"
         app:layout_constraintVertical_bias="1.0" />
